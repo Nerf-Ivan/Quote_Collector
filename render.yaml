@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: quote-collector
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn quote_collector.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: quote_collector.settings
+      - key: SECRET_KEY
+        value: django-insecure-1+ee2=w^@9e_7qiyn+w3l*f!*jh&r0ik2!-_tn9hwjkoz!&bxp
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
